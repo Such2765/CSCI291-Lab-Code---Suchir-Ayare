@@ -1,0 +1,38 @@
+// Coffee Maker Simulator Task
+#include <stdio.h>
+
+// Constant Coffee Quantity Requirements
+#define espresso_Beans 8
+#define espresso_Water 30
+#define expresso_Milk 0
+#define espresso_ChocoSyrup 0
+
+#define cappuccino_Beans 8
+#define cappuccino_Water 30
+#define cappuccino_Milk 70
+#define cappuccino_ChocoSyrup 0
+
+#define mocha_Beans 8
+#define mocha_Water 39
+#define mocha_Milk 160
+#define mocha_ChocoSyrup 30
+
+// Constant Coffee Prices
+#define espresso_Price 3.5
+#define cappuccino_Price 4.5
+#define mocha_Price 5.5
+
+// Admin Details 
+#define admin_Password 270605
+
+// Threshold Value For Coffee Ingredients
+#define threshold_Beans 10
+#define threshold_Water 50
+#define threshold_Milk 200
+#define threshold_ChocoSyrup 50
+
+int main() {
+    printf(" ");
+
+    return 0;
+}
