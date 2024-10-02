@@ -1,5 +1,6 @@
 // Coffee Maker Simulator Task
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 
 // Constant Coffee Quantity Requirements
@@ -35,7 +36,7 @@
 // Predefined Functions Used In Main Code
 void adminInterface();
 void customerInterface();
-void confirm();
+void confirmIngredients();
 
 int main() {
     // Predefined Variables Used In Main Code
@@ -60,11 +61,27 @@ int main() {
 }
 
 // Function For Admin Interface
-void adminInterface() {
-    char adminKey[6]
+void adminInterface() { 
+    char adminKey[6];
     
+    // Admin Key Verifier
     printf("\nEnter Admin Key - ");
-    scanf("%s", adminKey)
+    scanf("%s", adminKey);
+    if (strcmp(adminKey, admin_Password) != 0) {
+        printf("Access Denied!.\n");
+        return;
+    }
+    
+    // Choosing Admin Task With Infinite Loop
+    while (1){
+        printf("\n--------------- ADMIN TASKS ---------------");
+        printf("\n1: Display current ingredient quantity and total sale amount");
+        printf("\n2: Replenish ingredients in the machine");
+        printf("\n3: Change coffee price");
+        printf("\n0: Exit the Admin Mode function");
+        printf("\nChoose Admin Task - ")
+        scanf("%s", adminKey);
+    }
 }
 
 // Function For Customer Interface
@@ -78,4 +95,9 @@ void customerInterface() {
     printf("\n3) Mocha         %.2f AED",mocha_Price);
     printf("\nEnter Your Coffee Choice: ");
     scanf("\n %d", &coffeeChoice);
+}
+
+// Function For Confirming Ingredients
+void confirmIngredients() {
+    
 }
