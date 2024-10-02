@@ -1,5 +1,6 @@
 // Coffee Maker Simulator Task
 #include <stdio.h>
+#include <math.h>
 
 // Constant Coffee Quantity Requirements
 #define espresso_Beans 8
@@ -23,7 +24,7 @@
 #define mocha_Price 5.5
 
 // Admin Details 
-#define admin_Password 270605
+#define admin_Password "270605"
 
 // Threshold Value For Coffee Ingredients
 #define threshold_Beans 10
@@ -31,8 +32,50 @@
 #define threshold_Milk 200
 #define threshold_ChocoSyrup 50
 
-int main() {
-    printf(" ");
+// Predefined Functions Used In Main Code
+void adminInterface();
+void customerInterface();
+void confirm();
 
+int main() {
+    // Predefined Variables Used In Main Code
+    int entry;
+    
+    // WHILE Loop To Execute Recurring Interface 
+    while (1){
+        printf("Welcome To Molly's Cafe!");
+        printf("\nAre You An Admin (1) Or A Customer (2).\n");
+        scanf("%d", &entry);
+        
+        switch(entry) {
+            case 1: adminInterface();
+                break;
+            case 2: customerInterface();
+                break;
+            default:
+                printf("Invalid Choice Please Try Again!\n\n");
+        }
+    }
     return 0;
+}
+
+// Function For Admin Interface
+void adminInterface() {
+    char adminKey[6]
+    
+    printf("\nEnter Admin Key - ");
+    scanf("%s", adminKey)
+}
+
+// Function For Customer Interface
+void customerInterface() {
+    int coffeeChoice;
+    
+    printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino And 3 For Mocha.");
+    printf("\n ----- COFFEE MENU -----");
+    printf("\n1) Espresso      %.2f AED",espresso_Price);
+    printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
+    printf("\n3) Mocha         %.2f AED",mocha_Price);
+    printf("\nEnter Your Coffee Choice: ");
+    scanf("\n %d", &coffeeChoice);
 }
