@@ -21,9 +21,9 @@
 #define mocha_ChocoSyrup 30
 
 // Constant Coffee Prices (AED)
-#define espresso_Price 3.5
-#define cappuccino_Price 4.5
-#define mocha_Price 5.5
+float espresso_Price = 3.5;
+float cappuccino_Price = 4.5;
+float mocha_Price = 5.5;
 
 // Admin Details 
 #define admin_Password "270605"
@@ -155,12 +155,14 @@ void replenishIngredients() {
     printf("\nCurrent Quantity Of Water:  %d ml",water);
     printf("\nCurrent Quantity Of Milk:  %d ml",milk);
     printf("\nCurrent Quantity Of Chocolate Syrup: %d ml\n\n",chocoSyrup);
+    return;
 }
 
 // Function For Changing Coffee Prices 
 void changePrices() {
-    printf("You Have Chosen To Change The Prices Of The Coffee.");
-}
+    printf("\nInput New Price For Espresso - ");
+    scanf("%lf", &espresso_Price);
+    }
 
 // Function For Reset Total Sales Made
 void resetSales() {
