@@ -36,7 +36,6 @@
 // Predefined Functions Used In Main Code
 void adminInterface();
 void customerInterface();
-void confirmIngredients();
 void displayIngredients();
 void replenishIngredients();
 void changePrices();
@@ -86,8 +85,8 @@ void adminInterface() {
         printf("\n4: Reset Total Sales");
         printf("\n0: Exit the Admin Mode function");
         printf("\nChoose Admin Task Based On Its Corresponding Numbers - ");
-        scanf("%s", adminTask);
-        
+        scanf("%d", adminTask);
+    }
     switch (adminTask) {
             case 1: displayIngredients(); break;
             case 2: replenishIngredients(); break;
@@ -95,7 +94,7 @@ void adminInterface() {
             case 4: resetSales(); break;
             case 0: return;
             default: printf("Invalid Task Selection! Please Try Again.\n");
-    }
+        }
 }
 
 // Function For Displaying Ingredients To Admin
