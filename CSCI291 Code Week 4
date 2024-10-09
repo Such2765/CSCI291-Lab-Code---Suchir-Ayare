@@ -1,0 +1,129 @@
+// Coffee Maker Simulator Task
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+// Constant Coffee Quantity Requirements
+#define espresso_Beans 8
+#define espresso_Water 30
+#define expresso_Milk 0
+#define espresso_ChocoSyrup 0
+
+#define cappuccino_Beans 8
+#define cappuccino_Water 30
+#define cappuccino_Milk 70
+#define cappuccino_ChocoSyrup 0
+
+#define mocha_Beans 8
+#define mocha_Water 39
+#define mocha_Milk 160
+#define mocha_ChocoSyrup 30
+
+// Constant Coffee Prices
+#define espresso_Price 3.5
+#define cappuccino_Price 4.5
+#define mocha_Price 5.5
+
+// Admin Details 
+#define admin_Password "270605"
+
+// Threshold Value For Coffee Ingredients
+#define threshold_Beans 10
+#define threshold_Water 50
+#define threshold_Milk 200
+#define threshold_ChocoSyrup 50
+
+// Predefined Functions Used In Main Code
+void adminInterface();
+void customerInterface();
+void confirmIngredients();
+void displayIngredients();
+void replenishIngredients();
+void changePrices();
+
+int main() {
+    // Predefined Variables Used In Main Code
+    int entry;
+    
+    // WHILE Loop To Execute Recurring Interface 
+    while (1){
+        printf("Welcome To Molly's Cafe!");
+        printf("\nAre You An Admin (1) Or A Customer (2).\n");
+        scanf("%d", &entry);
+        
+        switch(entry) {
+            case 1: adminInterface();
+                break;
+            case 2: customerInterface();
+                break;
+            default:
+                printf("Invalid Choice Please Try Again!\n\n");
+        }
+    }
+    return 0;
+}
+
+// Function For Admin Interface
+void adminInterface() { 
+    char adminKey[6];
+    int adminTask;
+    
+    // Admin Key Verifier
+    printf("\nEnter Admin Key - ");
+    scanf("%s", adminKey);
+    if (strcmp(adminKey, admin_Password) != 0) {
+        printf("Access Denied!.\n");
+        return;
+    }
+    
+    // Choosing Admin Task With Infinite Loop
+    while (1){
+        printf("\n--------------- ADMIN TASKS ---------------");
+        printf("\n1: Display current ingredient quantity and total sale amount");
+        printf("\n2: Replenish ingredients in the machine");
+        printf("\n3: Change coffee price");
+        printf("\n0: Exit the Admin Mode function");
+        printf("\nChoose Admin Task Based On Its Corresponding Numbers - ")
+        scanf("%s", adminTask);
+        
+    switch (adminTask) {
+            case 1: displayIngredients(); break;
+            case 2: replenishIngredients(); break;
+            case 3: changePrices(); break;
+            case 0: return;
+            default: printf("Invalid Task Selection! Please Try Again.\n");
+    }
+}
+
+// Function For Displaying Ingredients To Admin
+void displayIngredients() {
+    
+}
+
+// Function For Replenishing Ingredients (Admin Task)
+void replenishIngredients() {
+    
+}
+
+// Function For Changing Coffee Prices 
+void changePrices() {
+    
+}
+
+// Function For Customer Interface
+void customerInterface() {
+    int coffeeChoice;
+    
+    printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino And 3 For Mocha.");
+    printf("\n ----- COFFEE MENU -----");
+    printf("\n1) Espresso      %.2f AED",espresso_Price);
+    printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
+    printf("\n3) Mocha         %.2f AED",mocha_Price);
+    printf("\nEnter Your Coffee Choice: ");
+    scanf("\n %d", &coffeeChoice);
+}
+
+// Function For Confirming Ingredients
+void confirmIngredients() {
+    
+}
