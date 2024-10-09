@@ -40,6 +40,7 @@ void confirmIngredients();
 void displayIngredients();
 void replenishIngredients();
 void changePrices();
+void resetSales();
 
 int main() {
     // Predefined Variables Used In Main Code
@@ -82,14 +83,16 @@ void adminInterface() {
         printf("\n1: Display current ingredient quantity and total sale amount");
         printf("\n2: Replenish ingredients in the machine");
         printf("\n3: Change coffee price");
+        printf("\n4: Reset Total Sales");
         printf("\n0: Exit the Admin Mode function");
-        printf("\nChoose Admin Task Based On Its Corresponding Numbers - ")
+        printf("\nChoose Admin Task Based On Its Corresponding Numbers - ");
         scanf("%s", adminTask);
         
     switch (adminTask) {
             case 1: displayIngredients(); break;
             case 2: replenishIngredients(); break;
             case 3: changePrices(); break;
+            case 4: resetSales(); break;
             case 0: return;
             default: printf("Invalid Task Selection! Please Try Again.\n");
     }
@@ -97,17 +100,22 @@ void adminInterface() {
 
 // Function For Displaying Ingredients To Admin
 void displayIngredients() {
-    
+    printf("You Have Chosen To See Current Amount Of Coffee Ingredients.");
 }
 
 // Function For Replenishing Ingredients (Admin Task)
 void replenishIngredients() {
-    
+    printf("You Have Chosen To Replenish The Amount Of Ingredients In Machine.");
 }
 
 // Function For Changing Coffee Prices 
 void changePrices() {
-    
+    printf("You Have Chosen To Change The Prices Of The Coffee.");
+}
+
+// Function For Reset Total Sales Made
+void resetSales() {
+    printf("You Have Chosen To Reset The Total Sales.");
 }
 
 // Function For Customer Interface
@@ -125,5 +133,6 @@ void customerInterface() {
 
 // Function For Confirming Ingredients
 void confirmIngredients() {
-    
+    printf("Hello");
+}
 }
