@@ -195,6 +195,7 @@ void resetSales() {
 void customerInterface() {
     int coffeeChoice;
     char confirmChoice;
+    float balancePrice;
     
     //Conditions To Provide User Information Whether Their Preferred Coffee Is Avaliable Or Not
     printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino And 3 For Mocha.");
@@ -220,6 +221,15 @@ void customerInterface() {
     scanf("%d", &coffeeChoice);
     
     printf("You Have Choose Option %.2f As Your Preferred Coffee.\n", coffeeChoice);
+    
+    //A switch statement to provide a specific and general value for the balance price the user has to pay to get the coffee.
+    switch (coffeeChoice) {
+        case 1: balancePrice =  espresso_Price;
+        case 2: balancePrice = cappuccino_Price;
+        case 3: balancePrice = mocha_Price;
+    }
+    
+    // Allows Confimation Of Choice Of Coffee
     printf("Would You Like To Change Your Choice? (Y/N): \n");
     scanf(" %c", &confirmChoice);
     
@@ -228,7 +238,10 @@ void customerInterface() {
         customerInterface();
     } else if (confirmChoice == 'N'||confirmChoice == 'n'){
         printf("You Have Not Chosen To Change Your Decision!\n");
-        printf("Add Your Amount");
+        printf("Your Balance For Your Chosen Coffee Is %.2f AED\n",balancePrice);
+        
+        printf("Input 1 to enter 1.00 AED and 5 to enter 0.50 AED\n")
+        
     } else {
         printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
         return;
