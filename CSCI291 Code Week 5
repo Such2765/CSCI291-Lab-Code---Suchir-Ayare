@@ -46,6 +46,7 @@ void replenishIngredients();
 void changePrices();
 void resetSales();
 void payment();
+void checkLowIngredients()
 
 int main() {
     // Predefined Variables Used In Main Code
