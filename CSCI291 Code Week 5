@@ -150,7 +150,6 @@ void replenishIngredients() {
                 return;
         }
         
-    // Display Updated Amount Of Ingredients Added To Machine
     printf("\n------------ Replenished Coffee Ingredients ------------");
     printf("\nCurrent Quantity Of Coffee Beans:  %d ml",coffeeBeans);
     printf("\nCurrent Quantity Of Water:  %d ml",water);
@@ -177,54 +176,61 @@ void changePrices() {
 
 // Function For Reset Total Sales Made
 void resetSales() {
+    char resetSales;
+    
     printf("You Have Chosen To Reset The Total Sales.");
+    printf("Current Total Sales: %.2f AED\n", total_amount);
+    printf("Would you like to reset the sales amount to 0? (y/n): ");
+    scanf(" %c", &resetSales);
+
+    if (resetSales == 'y' || resetSales == 'Y') {
+        total_amount = 0.0;
+        printf("Total Sales Have Been Reset, Please Remove Today's In From The Dispenser Below.\n");
+    } else {
+        printf("Total Sales Amount Was Not Reset.\n");
+    }
 }
 
 // Function For Customer Interface
 void customerInterface() {
     int coffeeChoice;
-   
-   while (1){
-        // Menu With Prices
-        printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino, 3 For Mocha And 0 To Exit Menu.");
-        printf("\n ----- COFFEE MENU -----");
-        printf("\n1) Espresso      %.2f AED",espresso_Price);
-        printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
-        printf("\n3) Mocha         %.2f AED",mocha_Price);
-        printf("\n0) Exit Menu!");
-        printf("\nEnter Your Coffee Choice: ");
-        scanf("%d", &coffeeChoice);
+    char confirmChoice;
     
-        // Switch Statement In While Loop That Will Present The Customers If There Choice Is Avaliable Or Not And Accordingly Guide Them Towards Payment
-        switch (coffeeChoice) {
-            case 1: 
-                if (coffeeBeans >= espresso_Beans && water >= espresso_Water){
-                    printf("Your Balance For A Cup Of Espresso Is %.2f AED\n", espresso_Price);
-                    break;
-                } else {
-                    printf("Sorry! Espresso Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
-                    break;
-                }
-            case 2:
-                if (coffeeBeans >= cappuccino_Beans && water >= cappuccino_Water && milk >= cappuccino_Milk){
-                    printf("Your Balance For A Cup Of Cappuccino Is %.2f AED\n", cappuccino_Price);
-                    break;
-                } else {
-                    printf("Sorry! Cappuccino Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
-                    break;
-                    }
-            case 3:
-                if (coffeeBeans >= mocha_Beans && water >= mocha_Water && milk >= mocha_Milk && chocoSyrup >= mocha_ChocoSyrup){
-                    printf("Your Balance For A Cup Of Mocha Is %.2f AED\n", mocha_Price);
-                    break;
-                } else {
-                    printf("Sorry! Mocha Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
-                    break;
-                }
-            case 0: return;
-            default: 
-                printf("\nThey aren't any avaliable coffee, Please Contact A Member Of Staff!\n");
-                return;
+    //Conditions To Provide User Information Whether Their Preferred Coffee Is Avaliable Or Not
+    printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino And 3 For Mocha.");
+    printf("\n ----- COFFEE MENU -----");
+    if (coffeeBeans >= espresso_Beans && water >= espresso_Water){
+        printf("\n1) Espresso      %.2f AED",espresso_Price);
+    } else {
+        printf("Sorry! Espresso Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
         }
-    }   
+    if (coffeeBeans >= cappuccino_Beans && water >= cappuccino_Water && milk >= cappuccino_Milk){
+        printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
+    } else {
+        printf("Sorry! Cappuccino Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
+    }
+    if (coffeeBeans >= mocha_Beans && water >= mocha_Water && milk >= mocha_Milk && chocoSyrup >= mocha_ChocoSyrup){
+        printf("\n3) Mocha         %.2f AED",mocha_Price);
+    } else {
+        printf("Sorry! Mocha Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
+    }
+    
+    // Allow User To Input Their Preferred Coffee Choice
+    printf("\nEnter Your Coffee Choice: ");
+    scanf("%d", &coffeeChoice);
+    
+    printf("You Have Choose Option %.2f As Your Preferred Coffee.\n", coffeeChoice);
+    printf("Would You Like To Change Your Choice? (Y/N): \n");
+    scanf(" %c", &confirmChoice);
+    
+    if (confirmChoice == 'Y'||confirmChoice == 'y'){
+        printf("You Have Chosen To Change Your Decision!");
+        customerInterface();
+    } else if (confirmChoice == 'N'||confirmChoice == 'n'){
+        printf("You Have Not Chosen To Change Your Decision!\n");
+        printf("Add Your Amount");
+    } else {
+        printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
+        return;
+    }
 }
