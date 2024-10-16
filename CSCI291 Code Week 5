@@ -1,0 +1,230 @@
+// Coffee Maker Simulator Task
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+// Constant Coffee Quantity Requirements (ml)
+#define espresso_Beans 8
+#define espresso_Water 30
+
+#define cappuccino_Beans 8
+#define cappuccino_Water 30
+#define cappuccino_Milk 70
+
+#define mocha_Beans 8
+#define mocha_Water 39
+#define mocha_Milk 160
+#define mocha_ChocoSyrup 30
+
+// Variable Coffee Prices (AED) (Can Be Changed)
+float espresso_Price = 3.50;
+float cappuccino_Price = 4.50;
+float mocha_Price = 5.50;
+float total_amount = 0.00;
+
+// Admin Details 
+#define admin_Password "270605"
+
+// Threshold Value For Coffee Ingredients (ml)
+#define threshold_Beans 10
+#define threshold_Water 50
+#define threshold_Milk 200
+#define threshold_ChocoSyrup 50
+
+// Current Avaliable Machine Ingredient (ml)
+int coffeeBeans = 300;
+int water = 500;
+int milk = 1000;
+int chocoSyrup = 200;
+
+// Predefined Functions Used In Main Code
+void adminInterface();
+void customerInterface();
+void displayIngredients();
+void replenishIngredients();
+void changePrices();
+void resetSales();
+void payment();
+
+int main() {
+    // Predefined Variables Used In Main Code
+    int entry;
+    
+    // WHILE Loop To Execute Recurring Interface 
+    while (1){
+        printf("\nWelcome To Molly's Cafe!");
+        printf("\nAre You An Admin (1) Or A Customer (2).\n");
+        scanf("%d", &entry);
+        
+        switch(entry) {
+            case 1: adminInterface();
+                break;
+            case 2: customerInterface();
+                break;
+            default:
+                printf("Invalid Choice Please Try Again!\n\n");
+        }
+    }
+    return 0;
+}
+
+// Function For Admin Interface
+void adminInterface() { 
+    char adminKey[6];
+    int adminTask;
+    
+    // Admin Key Verifier
+    printf("\nEnter Admin Key - ");
+    scanf("%s", adminKey);
+    if (strcmp(adminKey, admin_Password) != 0) {
+        printf("Incorrect Key! Access Denied!.\n\n");
+        return;
+    }
+    
+    // Choosing Admin Task With Infinite Loop
+    while (1){
+        printf("\nWelcome Admin! Choose Task Based On Its Corresponding Numbers.");
+        printf("\n--------------- ADMIN TASKS ---------------");
+        printf("\n1: Display current ingredient quantity and total sale amount");
+        printf("\n2: Replenish ingredients in the machine");
+        printf("\n3: Change coffee price");
+        printf("\n4: Reset Total Sales");
+        printf("\n0: Exit the Admin Mode function");
+        printf("\nChosen Task - ");
+        scanf("%d", &adminTask);
+        
+        switch (adminTask) {
+            case 1: displayIngredients(); 
+                break;
+            case 2: replenishIngredients(); 
+                break;
+            case 3: changePrices(); 
+                break;
+            case 4: resetSales(); 
+                break;
+            case 0: 
+                return;
+            default: 
+                printf("Invalid Task Selection! Please Try Again.\n\n");
+        }
+    }
+}
+
+// Function For Displaying Ingredients To Admin
+void displayIngredients() {
+    printf("\nYou Have Chosen To See Current Amount Of Coffee Ingredients.");
+    printf("\n------------ Coffee Ingredients Avaliable ------------");
+    printf("\nCurrent Quantity Of Coffee Beans:  %d ml",coffeeBeans);
+    printf("\nCurrent Quantity Of Water:  %d ml",water);
+    printf("\nCurrent Quantity Of Milk:  %d ml",milk);
+    printf("\nCurrent Quantity Of Chocolate Syrup: %d ml\n\n",chocoSyrup);
+}
+
+// Function For Replenishing Ingredients (Admin Task)
+void replenishIngredients() {
+    int replenIng;
+    
+    printf("\nWhich Ingredient Would You Like To Replenish? Input The Corresponding Integer To Represent Your Choice.");
+    printf("\n1 - Coffee, 2 - Water, 3 - Milk, 4 - Chocolate Syrup, 5 - All Of Them, 0 - Choose Another Admin Task.\n");
+    scanf("%d", &replenIng);
+        
+        switch (replenIng) {
+            //Value changed by random. Range set between 2 numbers using %
+            case 1: coffeeBeans = rand() % 301 + 450; 
+                break;
+            case 2: water = rand() % 501 + 750; 
+                break;
+            case 3: milk = rand() % 751 + 1000; 
+                break;
+            case 4: chocoSyrup = rand() % 201 + 300;
+                break;
+            case 5: 
+                coffeeBeans = rand() % 301 + 450;
+                water = rand() % 501 + 750;
+                milk = rand() % 751 + 1000;
+                chocoSyrup = rand() % 201 + 300;
+                break;
+            default: 
+                ("You Haven't Chosen An Ingredient To Replenish. Returning To Main Screen.");
+                return;
+        }
+        
+    // Display Updated Amount Of Ingredients Added To Machine
+    printf("\n------------ Replenished Coffee Ingredients ------------");
+    printf("\nCurrent Quantity Of Coffee Beans:  %d ml",coffeeBeans);
+    printf("\nCurrent Quantity Of Water:  %d ml",water);
+    printf("\nCurrent Quantity Of Milk:  %d ml",milk);
+    printf("\nCurrent Quantity Of Chocolate Syrup: %d ml\n\n",chocoSyrup);
+    return;
+}
+
+// Function For Changing Coffee Prices 
+void changePrices() {
+    printf("\nEnter Prices Following A Decimal With Two Decimal Point Fromat, Example - 4.50, And Must Be Set In A Price That Can Be Paid With Only AED 1 And AED 0.5 Coins.");
+    printf("\nInput New Price For Espresso - ");
+    scanf("%f", &espresso_Price);
+    printf("\nInput New Price For Cappuccino - ");
+    scanf("%f", &cappuccino_Price);
+    printf("\nInput New Price For Mocha - ");
+    scanf("%f", &mocha_Price);
+    
+    printf("\n ----- Updated Prices Coffee Menu -----");
+    printf("\n1) Espresso      %.2f AED",espresso_Price);
+    printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
+    printf("\n3) Mocha         %.2f AED\n",mocha_Price);
+    }
+
+// Function For Reset Total Sales Made
+void resetSales() {
+    printf("You Have Chosen To Reset The Total Sales.");
+}
+
+// Function For Customer Interface
+void customerInterface() {
+    int coffeeChoice;
+   
+   while (1){
+        // Menu With Prices
+        printf("\nWelcome Customer! Please Select Your Preferred Coffee By Inputting 1 For Expresso, 2 For Cappuccino, 3 For Mocha And 0 To Exit Menu.");
+        printf("\n ----- COFFEE MENU -----");
+        printf("\n1) Espresso      %.2f AED",espresso_Price);
+        printf("\n2) Cappuccino    %.2f AED",cappuccino_Price);
+        printf("\n3) Mocha         %.2f AED",mocha_Price);
+        printf("\n0) Exit Menu!");
+        printf("\nEnter Your Coffee Choice: ");
+        scanf("%d", &coffeeChoice);
+    
+        // Switch Statement In While Loop That Will Present The Customers If There Choice Is Avaliable Or Not And Accordingly Guide Them Towards Payment
+        switch (coffeeChoice) {
+            case 1: 
+                if (coffeeBeans >= espresso_Beans && water >= espresso_Water){
+                    printf("Your Balance For A Cup Of Espresso Is %.2f AED\n", espresso_Price);
+                    break;
+                } else {
+                    printf("Sorry! Espresso Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
+                    break;
+                }
+            case 2:
+                if (coffeeBeans >= cappuccino_Beans && water >= cappuccino_Water && milk >= cappuccino_Milk){
+                    printf("Your Balance For A Cup Of Cappuccino Is %.2f AED\n", cappuccino_Price);
+                    break;
+                } else {
+                    printf("Sorry! Cappuccino Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
+                    break;
+                    }
+            case 3:
+                if (coffeeBeans >= mocha_Beans && water >= mocha_Water && milk >= mocha_Milk && chocoSyrup >= mocha_ChocoSyrup){
+                    printf("Your Balance For A Cup Of Mocha Is %.2f AED\n", mocha_Price);
+                    break;
+                } else {
+                    printf("Sorry! Mocha Is Currently Unavailable Due To Temporarily Insuﬃcient Ingredients\n");
+                    break;
+                }
+            case 0: return;
+            default: 
+                printf("\nThey aren't any avaliable coffee, Please Contact A Member Of Staff!\n");
+                return;
+        }
+    }   
+}
