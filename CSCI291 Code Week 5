@@ -240,10 +240,22 @@ void customerInterface() {
         printf("You Have Not Chosen To Change Your Decision!\n");
         printf("Your Balance For Your Chosen Coffee Is %.2f AED\n",balancePrice);
         
-        printf("Input 1 to enter 1.00 AED and 5 to enter 0.50 AED\n")
+        printf("Input 1 to enter 1.00 AED and 5 to enter 0.50 AED\n");
         
     } else {
         printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
         return;
     }
+}
+
+//WARNINGS Provided To The User When The Ingredients Are Less Than The Threshold Value Set.
+void checkLowIngredients() {
+    if (coffeeBeans <= threshold_Beans)
+        printf("WARNING - COFFEE BEANS VOLUME LOW!\n");
+    if (water <= threshold_Water)
+        printf("WARNING - COFFEE WATER LEVEL LOW!\n");
+    if (milk <= threshold_Milk)
+        printf("WARNING - COFFEE MILK LEVEL LOW!\n");
+    if (chocoSyrup <= threshold_ChocoSyrup)
+        printf("WARNING - COFFEE CHOCOLATE SYRUP LEVEL LOW!\n");
 }
