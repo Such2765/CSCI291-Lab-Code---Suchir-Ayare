@@ -24,7 +24,7 @@ float mocha_Price = 5.50;
 float total_amount = 0.00;
 
 // Admin Details 
-#define admin_Password "270605"
+#define admin_Password "8488071"
 
 // Threshold Value For Coffee Ingredients (ml)
 #define threshold_Beans 10
@@ -54,7 +54,7 @@ int main() {
     // WHILE Loop To Execute Recurring Interface 
     while (1){
         printf("\nWelcome To Molly's Cafe!");
-        printf("\nAre You An Admin (1) Or A Customer (2).\n");
+        printf("\nInput 1 If You Are An Admin & 2 If You Would Like To Order A Coffee.\n");
         scanf("%d", &entry);
         
         switch(entry) {
@@ -71,7 +71,7 @@ int main() {
 
 // Function For Admin Interface
 void adminInterface() { 
-    char adminKey[6];
+    char adminKey[7];
     int adminTask;
     
     // Admin Key Verifier
@@ -225,15 +225,13 @@ void customerInterface() {
     
     //A switch statement to provide a specific and general value for the balance price the user has to pay to get the coffee.
     switch (coffeeChoice) {
-        case 1: balancePrice = espresso_Price;
-            printf("\nYou Choose Espresso As Your Preferred Coffee.");
-        case 2: balancePrice = cappuccino_Price;
-            printf("\nYou Choose Cappuccino As Your Preferred Coffee.");
-        case 3: balancePrice = mocha_Price;
-            printf("\nYou Choose Mocha As Your Preferred Coffee.");
+        case 1:balancePrice = espresso_Price; 
+        case 2:balancePrice = cappuccino_Price; 
+        case 3:balancePrice = mocha_Price; 
     }   
     
     // Allows Confimation Of Choice Of Coffee
+    printf("You have Choosen Coffee Option %d.",coffeeChoice);
     printf("Would You Like To Change Your Choice? (Y/N): \n");
     scanf(" %c", &confirmChoice);
     
@@ -252,12 +250,19 @@ void customerInterface() {
                     userInputPrice += coins;
                     printf("You Have Inserted: %.2f AED\n", userInputPrice);
                 } else {
-                    printf("Invalid Input! Please Collect The Coins And Try Again.\n");
+                    printf("Invalid Input! Please Collect The Incorrect Coins And Continue With Valid Coins.\n");
                 }
             }
         // Once The Payment Is Completed   
         if (userInputPrice == balancePrice){
             printf("Enjoy your coffee! You paid %.2f AED.\n", userInputPrice);
+            //Update total sales amount 
+            total_amount = total_amount += userInputPrice;
+        } else if (userInputPrice > balancePrice){
+            change = userInputPrice -= balancePrice;
+            printf("\nEnjoy your coffee! You paid %.2f AED.\n", userInputPrice);
+            printf("And here is your remaining change of %.2f AED.",change);
+            total_amount = total_amount += userInputPrice;
         }
         
     } else {
