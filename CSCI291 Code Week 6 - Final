@@ -246,8 +246,8 @@ void customerInterface() {
         
         //Continuous Loop To Allow User To Make Full Payment Assiming User Is Going TO Exact Amount.
         while (userInputPrice < balancePrice) {
-            printf("Input 1 to enter 1.00 AED and 0.5 to enter 0.50 AED\n");
-            scanf("%d",&coins);
+            printf("Input 1.0 to enter 1.00 AED and 0.5 to enter 0.50 AED\n");
+            scanf("%f",&coins);
                 if (coins == 1 || coins == 0.5) {
                     userInputPrice += coins;
                     printf("You Have Inserted: %.2f AED\n", userInputPrice);
@@ -256,8 +256,9 @@ void customerInterface() {
                 }
             }
         // Once The Payment Is Completed   
-        userInputPrice += balancePrice;
-        printf("Enjoy your coffee! You paid %.2f AED.\n", userInputPrice);
+        if (userInputPrice == balancePrice){
+            printf("Enjoy your coffee! You paid %.2f AED.\n", userInputPrice);
+        }
         
     } else {
         printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
