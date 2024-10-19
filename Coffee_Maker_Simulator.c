@@ -1,4 +1,4 @@
-// Coffee Maker Simulator Task
+    // Coffee Maker Simulator Task
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -146,7 +146,7 @@ void replenishIngredients() {
                 chocoSyrup = rand() % 201 + 300;
                 break;
             default: 
-                ("You Haven't Chosen An Ingredient To Replenish. Returning To Main Screen.");
+                printf("You Haven't Chosen An Ingredient To Replenish. Returning To Main Screen.");
                 return;
         }
         
@@ -271,8 +271,8 @@ void customerInterface() {
         // Set Of Commands That Will Update The Current Amount Of Ingredients Used After The Payment Has Been Made. 
         if (coffeeChoice == 1 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
             //Subtracting The Amount Used To Make This Coffee By Current Total Amount Of Ingredient
-            coffeeBeans = coffeeBeans -= espresso_Beans;
-            water = water -= espresso_Water;
+            coffeeBeans = coffeeBeans - espresso_Beans;
+            water = water - espresso_Water;
         
         } else if (coffeeChoice == 2 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
             coffeeBeans = coffeeBeans - cappuccino_Beans;
@@ -287,7 +287,7 @@ void customerInterface() {
         }
         
         // Allows The User To Choose Whether Or Not They Would Like A Transcipt Of Their Purchase
-        printf("\nHere Is A Transcript Of Your Purchase: :\n",recipt);
+        printf("\nHere Is A Transcript Of Your Purchase: :\n");
         printf("--------- RECIPT ----------");
             if (coffeeChoice == 1){
                 printf("\nCoffee Type -     Espresso");
