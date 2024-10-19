@@ -287,28 +287,19 @@ void customerInterface() {
         }
         
         // Allows The User To Choose Whether Or Not They Would Like A Transcipt Of Their Purchase
-        printf("\nWould You A Transcrip Of Your Perchase? (Y/N) :\n",recipt);
-        scanf("%c",&recipt);
-        switch (recipt){
-            case 'Y':{
-                printf("--------- RECIPT ----------");
-                if (coffeeChoice == 1){
-                    printf("\nCoffee Type - Espresso");
-                } else if (coffeeChoice == 1){
-                    printf("\nCoffee Type - Cappuccino");
-                } else if (coffeeChoice == 1){
-                    printf("\nCoffee Type - Mocha");
-                }
-                printf("\nPrice - %.2f AED ",balancePrice);
-                printf("\nAmount Paid - %.2f AED ",userInputPrice);
-                printf("\nChange Recieved - %.2f AED",change);
-                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!");
-            
-            } case 'N':{
-                printf("\nYou have Chosen Not To Recieve A Recipt.");
-                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!");
+        printf("\nHere Is A Transcript Of Your Purchase: :\n",recipt);
+        printf("--------- RECIPT ----------");
+            if (coffeeChoice == 1){
+                printf("\nCoffee Type -     Espresso");
+            } else if (coffeeChoice == 2){
+                printf("\nCoffee Type -   Cappuccino");
+            } else if (coffeeChoice == 3){
+                printf("\nCoffee Type -        Mocha");
             }
-        }
+        printf("\nPrice -           %.2f AED",balancePrice);
+        printf("\nAmount Paid -     %.2f AED ",userInputPrice);         
+        printf("\nChange Recieved - %.2f AED\n",change);            
+        printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!\n");
     
     } else {
         printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
