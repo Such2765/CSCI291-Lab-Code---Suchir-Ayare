@@ -242,6 +242,7 @@ void customerInterface() {
     } else if (confirmChoice == 'N'||confirmChoice == 'n'){
         printf("\nYou Have Not Chosen To Change Your Decision!\n");
         printf("Your Balance For Your Chosen Coffee Is %.2f AED\n",balancePrice);
+    
         
         //Continuous Loop To Allow User To Make Full Payment Assiming User Is Going TO Exact Amount.
         while (userInputPrice < balancePrice) {
@@ -270,16 +271,16 @@ void customerInterface() {
         // Set Of Commands That Will Update The Current Amount Of Ingredients Used After The Payment Has Been Made. 
         if (coffeeChoice == 1 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
             //Subtracting The Amount Used To Make This Coffee By Current Total Amount Of Ingredient
-            coffeebeans = coffeeBeans -= espresso_Beans;
+            coffeeBeans = coffeeBeans -= espresso_Beans;
             water = water -= espresso_Water;
         
         } else if (coffeeChoice == 2 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
-            coffeebeans = coffeeBeans -= cappuccino_Beans;
+            coffeeBeans = coffeeBeans -= cappuccino_Beans;
             water = water -= cappuccino_Water;
             milk = milk -= cappuccino_Milk;
             
         } else if (coffeeChoice == 3 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
-            coffeebeans = coffeeBeans -= mocha_Beans;
+            coffeeBeans = coffeeBeans -= mocha_Beans;
             water = water -= mocha_Water;
             milk = milk -= mocha_Milk;
             chocoSyrup = chocoSyrup -= mocha_ChocoSyrup;
@@ -289,31 +290,26 @@ void customerInterface() {
         printf("\nWould You A Transcrip Of Your Perchase? (Y/N) :\n",recipt);
         scanf("%c",&recipt);
         switch (recipt){
-            case "Y":{
+            case 'Y':{
                 printf("--------- RECIPT ----------");
                 if (coffeeChoice == 1){
                     printf("\nCoffee Type - Espresso");
-                    printf("\nPrice - %.2f AED ",balancePrice);
-                    printf("\nAmount Paid - %.2f AED ",userInputPrice);
-                    printf("\nChange Recieved - %.2f AED",change);
                 } else if (coffeeChoice == 1){
                     printf("\nCoffee Type - Cappuccino");
-                    printf("\nPrice - %.2f AED ",balancePrice);
-                    printf("\nAmount Paid - %.2f AED ",userInputPrice);
-                    printf("\nChange Recieved - %.2f AED",change);
                 } else if (coffeeChoice == 1){
                     printf("\nCoffee Type - Mocha");
-                    printf("\nPrice - %.2f AED ",balancePrice);
-                    printf("\nAmount Paid - %.2f AED ",userInputPrice);
-                    printf("\nChange Recieved - %.2f AED",change);
                 }
-                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!")
+                printf("\nPrice - %.2f AED ",balancePrice);
+                printf("\nAmount Paid - %.2f AED ",userInputPrice);
+                printf("\nChange Recieved - %.2f AED",change);
+                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!");
+            
+            } case 'N':{
+                printf("\nYou have Chosen Not To Recieve A Recipt.");
+                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!");
             }
-            case "N":{
-                printf("\nYou have Chosen Not To Recieve A Recipt.")
-                printf("\nThank You For Choosing To Purchase From Molly's Cafe, Please Come Again!")
-            }
-                
+        }
+    
     } else {
         printf("You Have Inputted An Incorrect Choice, Input Either Y or N!\n");
         return;
