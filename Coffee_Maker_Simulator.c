@@ -1,4 +1,4 @@
-    // Coffee Maker Simulator Task
+// Coffee Maker Simulator Task
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -64,6 +64,7 @@ int main() {
                 break;
             default:
                 printf("Invalid Choice Please Try Again!\n\n");
+                return 1;
         }
     }
     return 0;
@@ -130,20 +131,20 @@ void replenishIngredients() {
     scanf("%d", &replenIng);
         
         switch (replenIng) {
-            //Value changed by random. Range set between 2 numbers using %
-            case 1: coffeeBeans = rand() % 301 + 450; 
+            //Value changed by random. Range set between 2 numbers using format (upper_bound - lower_bound + 1) + lower_bound;
+            case 1: coffeeBeans = rand() % 151 + 301
                 break;
-            case 2: water = rand() % 501 + 750; 
+            case 2: water = rand() % 151 + 501; 
                 break;
-            case 3: milk = rand() % 751 + 1000; 
+            case 3: milk = rand() % 151 + 751; 
                 break;
-            case 4: chocoSyrup = rand() % 201 + 300;
+            case 4: chocoSyrup = rand() % 101 + 201;
                 break;
             case 5: 
-                coffeeBeans = rand() % 301 + 450;
-                water = rand() % 501 + 750;
-                milk = rand() % 751 + 1000;
-                chocoSyrup = rand() % 201 + 300;
+                coffeeBeans = rand() % 151 + 301
+                water = rand() % 151 + 501;
+                milk = rand() % 151 + 751;
+                chocoSyrup = rand() % 101 + 201;
                 break;
             default: 
                 printf("You Haven't Chosen An Ingredient To Replenish. Returning To Main Screen.");
@@ -271,8 +272,8 @@ void customerInterface() {
         // Set Of Commands That Will Update The Current Amount Of Ingredients Used After The Payment Has Been Made. 
         if (coffeeChoice == 1 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
             //Subtracting The Amount Used To Make This Coffee By Current Total Amount Of Ingredient
-            coffeeBeans = coffeeBeans - espresso_Beans;
-            water = water - espresso_Water;
+            coffeeBeans = coffeeBeans = espresso_Beans;
+            water = water = espresso_Water;
         
         } else if (coffeeChoice == 2 && ((userInputPrice == balancePrice)||(userInputPrice > balancePrice))){
             coffeeBeans = coffeeBeans - cappuccino_Beans;
@@ -287,7 +288,7 @@ void customerInterface() {
         }
         
         // Allows The User To Choose Whether Or Not They Would Like A Transcipt Of Their Purchase
-        printf("\nHere Is A Transcript Of Your Purchase: :\n");
+        printf("\nHere Is A Transcript Of Your Purchase: :\n",recipt);
         printf("--------- RECIPT ----------");
             if (coffeeChoice == 1){
                 printf("\nCoffee Type -     Espresso");
