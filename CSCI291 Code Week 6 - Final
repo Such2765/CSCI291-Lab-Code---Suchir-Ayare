@@ -132,7 +132,7 @@ void replenishIngredients() {
         
         switch (replenIng) {
             //Value changed by random. Range set between 2 numbers using format (upper_bound - lower_bound + 1) + lower_bound;
-            case 1: coffeeBeans = rand() % 151 + 301
+            case 1: coffeeBeans = rand() % 151 + 301;
                 break;
             case 2: water = rand() % 151 + 501; 
                 break;
@@ -141,7 +141,7 @@ void replenishIngredients() {
             case 4: chocoSyrup = rand() % 101 + 201;
                 break;
             case 5: 
-                coffeeBeans = rand() % 151 + 301
+                coffeeBeans = rand() % 151 + 301;
                 water = rand() % 151 + 501;
                 milk = rand() % 151 + 751;
                 chocoSyrup = rand() % 101 + 201;
@@ -244,7 +244,6 @@ void customerInterface() {
         printf("\nYou Have Not Chosen To Change Your Decision!\n");
         printf("Your Balance For Your Chosen Coffee Is %.2f AED\n",balancePrice);
     
-        
         //Continuous Loop To Allow User To Make Full Payment Assiming User Is Going TO Exact Amount.
         while (userInputPrice < balancePrice) {
             printf("Input 1.0 to enter 1.00 AED and 0.5 to enter 0.50 AED\n");
