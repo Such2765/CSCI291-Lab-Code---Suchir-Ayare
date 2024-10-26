@@ -77,7 +77,7 @@ void adminInterface() {
     
     // Admin Key Verifier
     printf("\nEnter Admin Key - ");
-    scanf("%s", adminKey);
+    scanf("%d", adminKey);
     if (strcmp(adminKey, admin_Password) != 0) {
         printf("Incorrect Key! Access Denied!.\n\n");
         return;
