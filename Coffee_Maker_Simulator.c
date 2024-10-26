@@ -225,11 +225,13 @@ void customerInterface() {
     printf("\nEnter Your Coffee Choice: ");
     scanf("%d", &coffeeChoice);
     
-    //A switch statement to provide a specific and general value for the balance price the user has to pay to get the coffee.
-    switch (coffeeChoice) {
-        case 1:balancePrice = espresso_Price; 
-        case 2:balancePrice = cappuccino_Price; 
-        case 3:balancePrice = mocha_Price; 
+    //An IF ELSE statement to provide a specific and general value for the balance price the user has to pay to get the coffee.
+    if (coffeeChoice == 1) {
+        balancePrice = espresso_Price; 
+    } else if (coffeeChoice == 1) {
+        balancePrice = cappuccino_Price; 
+    } else if (coffeeChoice == 1) {
+        balancePrice = mocha_Price; 
     }   
     
     // Allows Confimation Of Choice Of Coffee
